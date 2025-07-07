@@ -1,0 +1,64 @@
+
+<section id="main-container">
+    <div id="container">
+
+@if (!quizIniziato){
+    <div>
+    <label for="punteggioIniziale">Inserisci il punteggio di partenza:</label>
+    <input 
+        type="number" 
+        [max]="10" 
+        name="punteggioIniziale"
+        id="punteggioIniziale"
+        [(ngModel)]="punteggio"
+    >
+    </div>
+    <button
+        (click)="avviaQuiz()"
+        >Vai alle domande
+    </button>
+}
+
+
+@if(quizIniziato && domandaCorrente){
+    <span>Domanda numero {{indiceCorrente + 1}} su {{domande.length}}</span>
+    <h3>{{domandaCorrente.testo}}</h3>
+    @for(risposta of domandaCorrente.risposte; track $index; let i = $index){
+        <button  
+        [disabled]="risposteMostrate"
+        [class.corretta]="risposteMostrate && risposta.punteggio === '0.2'"
+        [class.neutra]="risposteMostrate && (risposta.punteggio === '0' || risposta.punteggio ==='-0.1')"
+        [class.errata]="risposteMostrate && risposta.punteggio === '-0.4'"
+        (click)="rispostaSelezionata(i)">
+            {{risposta.testo}}
+        </button>
+    }
+
+    @if(risposteMostrate){
+        <button (click)="prossimaDomanda()"> {{(indiceCorrente < domande.length -1) ? "Prossima Dommanda" : "Visualizza Risultato"}}</button>
+    }
+}
+
+
+
+@if(quizTerminato){
+    <div>
+        <h3>Quiz Terminato</h3>
+        <p>Punteggio finale: <strong>{{punteggio}}</strong></p>
+        <p>{{messaggioRisultato}}</p>
+        <a id="start-button" routerLink="/home">Torna alla Homepage</a>
+    </div>
+}
+</div>
+
+
+
+@if (quizTerminato) {
+     <h3>Riepilogo</h3>
+    @for(storicItem of storicoRisposte; track $index){
+        <strong>Domanda {{storicItem.domanda}}</strong>
+        <p>La tua risposta {{storicItem.rispostaUtente}}</p>
+        <p>Risposta Corretta {{storicItem.rispostaCorretta}}</p>
+    }
+}
+</section>

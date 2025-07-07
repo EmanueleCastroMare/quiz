@@ -1,0 +1,121 @@
+<section id="main-container">
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>Inserisci una domanda</h2>
+
+  <label>Domanda:</label>
+  <input 
+    type="text" 
+    formControlName="domanda" 
+    [class.input-error]="form.get('domanda')?.invalid && submitted"
+    />
+
+
+
+  <!-- Risposte -->
+<fieldset>
+  <legend>Risposte:</legend>
+  <div class="answer-group">
+  
+<div>
+  <label>Risposta 1</label>
+  <input type="text" formControlName="risposta1Testo"
+  [class.input-error]="form.get('risposta1Testo')?.invalid && submitted"
+  />
+  
+  <label>Punteggio</label>
+  <select  formControlName="risposta1Punteggio"
+    [class.input-error]="form.get('risposta1Punteggio')?.invalid && submitted"
+    >
+    @for (p of getOpzioniDisponibili("risposta1Punteggio"); track $index){
+        <option [value]="p">{{p}}</option>
+    }
+  </select>
+</div>
+
+<div>
+   <label>Risposta 2</label>
+  <input type="text" formControlName="risposta2Testo"
+  [class.input-error]="form.get('risposta2Testo')?.invalid && submitted"
+  />
+  
+  <label>Punteggio</label>
+  <select  formControlName="risposta2Punteggio"
+  [class.input-error]="form.get('risposta2Punteggio')?.invalid && submitted"
+  >
+      @for (p of getOpzioniDisponibili("risposta2Punteggio"); track $index){
+        <option [value]="p">{{p}}</option>
+    }
+  </select>
+</div>
+
+<div>
+   <label>Risposta 3</label>
+  <input type="text" formControlName="risposta3Testo" 
+  [class.input-error]="form.get('risposta3Testo')?.invalid && submitted"
+  />
+  
+  <label>Punteggio</label>
+  <select  formControlName="risposta3Punteggio"
+  [class.input-error]="form.get('risposta3Punteggio')?.invalid && submitted"
+  >
+  @for (p of getOpzioniDisponibili("risposta3Punteggio"); track $index){
+        <option [value]="p">{{p}}</option>
+    }
+  </select>
+</div>
+
+<div>
+   <label>Risposta 4</label>
+  <input type="text" formControlName="risposta4Testo" 
+  [class.input-error]="form.get('risposta4Testo')?.invalid && submitted"/>
+  
+  <label>Punteggio</label>
+  <select  formControlName="risposta4Punteggio"
+  [class.input-error]="form.get('risposta4Punteggio')?.invalid && submitted"
+  >
+  @for (p of getOpzioniDisponibili("risposta4Punteggio"); track $index){
+        <option [value]="p" >{{p}}</option>
+    }
+  </select>
+</div>
+
+</div>
+</fieldset>
+
+
+
+@if ((form.invalid) && submitted ) {
+    <div class="error-text">Tutti i campi devono essere inseriti</div>
+}
+  <button type="submit">Salva domanda</button>
+
+
+
+  @if(feedback.visible){
+    <div
+    class="feedback-box"
+    [class]="feedback.type"
+    >
+        {{feedback.message}}
+    </div>
+  }
+
+</form>
+
+
+<section id="admin-section--domanda">
+    @for( res of result; track res.id; let i = $index)  {
+    <div class="admin--domanda">
+        <h3>{{i + 1}} - {{res.testo}}</h3>
+        <ul>
+            @for(ris of res.risposte; track $index){
+                <li>{{ris.testo}} - Punteggio: {{ris.punteggio}}</li>
+            }
+        </ul>
+        <button class="delete-button" (click)="delete(res.id)">Cancella</button>
+    </div>
+    }
+</section>
+
+</section>

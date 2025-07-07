@@ -1,0 +1,70 @@
+{
+  "domande": [
+    {
+      "id": "9662",
+      "testo": "Di che  colore è il sole?",
+      "risposte": [
+        {
+          "testo": "Azzurro",
+          "punteggio": "-0.4"
+        },
+        {
+          "testo": "Giallo",
+          "punteggio": "0.2"
+        },
+        {
+          "testo": "Arancione",
+          "punteggio": "0"
+        },
+        {
+          "testo": "Rosso",
+          "punteggio": "-0.1"
+        }
+      ]
+    },
+    {
+      "id": "1389",
+      "testo": "Come si chiama Di Caprio?",
+      "risposte": [
+        {
+          "testo": "Marco",
+          "punteggio": "-0.4"
+        },
+        {
+          "testo": "Antonio",
+          "punteggio": "-0.1"
+        },
+        {
+          "testo": "Leopolodo",
+          "punteggio": "0"
+        },
+        {
+          "testo": "Leonardo",
+          "punteggio": "0.2"
+        }
+      ]
+    },
+    {
+      "id": "2486",
+      "testo": "Chi è il fratello di Super Mario",
+      "risposte": [
+        {
+          "testo": "Luigi",
+          "punteggio": "0.2"
+        },
+        {
+          "testo": "Wario",
+          "punteggio": "0"
+        },
+        {
+          "testo": "Peach",
+          "punteggio": "-0.1"
+        },
+        {
+          "testo": "Browser",
+          "punteggio": "-0.4"
+        }
+      ]
+    }
+  ]
+}
