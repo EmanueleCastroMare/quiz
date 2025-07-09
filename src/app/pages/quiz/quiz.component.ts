@@ -53,7 +53,9 @@ rispostaSelezionata(index: number) {
   this.punteggio = Number(this.punteggio.toFixed(2))
   console.log(this.punteggio)
 
+  //salvo l'indice della risposta selezionata
   this.selectedRispostaIndex = index;
+  console.log("Risposta selezionata:", this.selectedRispostaIndex);
   this.risposteMostrate = true;
 
   // Trova risposta corretta (con punteggio massimo > 0)
@@ -91,7 +93,7 @@ mostraRisultato(){
   if (this.punteggio >= 6)  {
     this.messaggioRisultato = "Congratulazioni! hai superato l'esame!"
   } else {
-    this.messaggioRisultato = "Hai fallito il quiz"
+    this.messaggioRisultato = "Hai fallito il quiz :("
   }
 }
 

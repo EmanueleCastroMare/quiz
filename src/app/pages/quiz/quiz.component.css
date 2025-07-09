@@ -34,6 +34,38 @@
 }
 
 
+#quiz-finale {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#restart-button {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    width: 80%;
+    text-decoration: none;
+}
+
+
+.storic-item {
+    width: 100%;
+     box-shadow: 0 0 10px rgba(0 0 0 / 0.1);
+     padding: 12px;
+     margin-bottom: 12px;
+}
+
+
+.text-correct {
+    color: green;
+    font-style: italic;
+}
+
 
 .corretta {
     background-color: green!important;
@@ -45,4 +77,8 @@
 
 .errata {
     background-color: red!important;
+}
+
+.selected  {
+    border: 5px solid #3498db!important;
 }

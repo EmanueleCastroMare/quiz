@@ -8,6 +8,7 @@
     <input 
         type="number" 
         [max]="10" 
+        [min]="0"
         name="punteggioIniziale"
         id="punteggioIniziale"
         [(ngModel)]="punteggio"
@@ -29,6 +30,7 @@
         [class.corretta]="risposteMostrate && risposta.punteggio === '0.2'"
         [class.neutra]="risposteMostrate && (risposta.punteggio === '0' || risposta.punteggio ==='-0.1')"
         [class.errata]="risposteMostrate && risposta.punteggio === '-0.4'"
+        [class.selected]="selectedRispostaIndex === i"
         (click)="rispostaSelezionata(i)">
             {{risposta.testo}}
         </button>
@@ -42,11 +44,11 @@
 
 
 @if(quizTerminato){
-    <div>
+    <div id="quiz-finale">
         <h3>Quiz Terminato</h3>
         <p>Punteggio finale: <strong>{{punteggio}}</strong></p>
         <p>{{messaggioRisultato}}</p>
-        <a id="start-button" routerLink="/home">Torna alla Homepage</a>
+        <a id="restart-button" routerLink="/home">Torna alla Homepage</a>
     </div>
 }
 </div>
@@ -56,9 +58,11 @@
 @if (quizTerminato) {
      <h3>Riepilogo</h3>
     @for(storicItem of storicoRisposte; track $index){
-        <strong>Domanda {{storicItem.domanda}}</strong>
-        <p>La tua risposta {{storicItem.rispostaUtente}}</p>
-        <p>Risposta Corretta {{storicItem.rispostaCorretta}}</p>
+        <div class="storic-item">
+            <strong>Domanda {{storicItem.domanda}}</strong>
+            <p>La tua risposta: <strong>{{storicItem.rispostaUtente}}</strong></p>
+            <p class="text-correct">Risposta Corretta: <strong>{{storicItem.rispostaCorretta}}</strong></p>
+        </div>
     }
 }
 </section>
