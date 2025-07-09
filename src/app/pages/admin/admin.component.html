@@ -27,7 +27,7 @@
   <select  formControlName="risposta1Punteggio"
     [class.input-error]="form.get('risposta1Punteggio')?.invalid && submitted"
     >
-    @for (p of getOpzioniDisponibili("risposta1Punteggio"); track $index){
+    @for (p of punteggiDisponibili; track $index){
         <option [value]="p">{{p}}</option>
     }
   </select>
@@ -43,7 +43,7 @@
   <select  formControlName="risposta2Punteggio"
   [class.input-error]="form.get('risposta2Punteggio')?.invalid && submitted"
   >
-      @for (p of getOpzioniDisponibili("risposta2Punteggio"); track $index){
+      @for (p of punteggiDisponibili; track $index){
         <option [value]="p">{{p}}</option>
     }
   </select>
@@ -59,7 +59,7 @@
   <select  formControlName="risposta3Punteggio"
   [class.input-error]="form.get('risposta3Punteggio')?.invalid && submitted"
   >
-  @for (p of getOpzioniDisponibili("risposta3Punteggio"); track $index){
+  @for (p of punteggiDisponibili; track $index){
         <option [value]="p">{{p}}</option>
     }
   </select>
@@ -74,7 +74,7 @@
   <select  formControlName="risposta4Punteggio"
   [class.input-error]="form.get('risposta4Punteggio')?.invalid && submitted"
   >
-  @for (p of getOpzioniDisponibili("risposta4Punteggio"); track $index){
+  @for (p of punteggiDisponibili; track $index){
         <option [value]="p" >{{p}}</option>
     }
   </select>

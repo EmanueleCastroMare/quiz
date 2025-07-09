@@ -21,13 +21,9 @@ error = false;
 submitted = false;
 
 
+
 punteggiDisponibili = [0.2, 0, -0.1, -0.4]
 
-// Opzioni disponibili per ogni select
-  opzioni1: number[] = [];
-  opzioni2: number[] = [];
-  opzioni3: number[] = [];
-  opzioni4: number[] = [];
 
 
 
@@ -60,36 +56,9 @@ constructor(private domandeService: DomandeService, private fb: FormBuilder) {
       risposta4Punteggio: [null, Validators.required],
   })
 
-  
 }
 
-
-aggiornaOpzioni() {
-  this.opzioni1 = this.getOpzioniDisponibili('risposta1Punteggio');
-  this.opzioni2 = this.getOpzioniDisponibili('risposta2Punteggio');
-  this.opzioni3 = this.getOpzioniDisponibili('risposta3Punteggio');
-  this.opzioni4 = this.getOpzioniDisponibili('risposta4Punteggio');
-}
-
-
-getPunteggiSelezionati(): (number | null)[]{
-  return [
-    this.form.get("risposta1Punteggio")?.value,
-    this.form.get("risposta2Punteggio")?.value,
-    this.form.get("risposta3Punteggio")?.value,
-    this.form.get("risposta4Punteggio")?.value,
-  ]
-}
-
-getOpzioniDisponibili(currentField: string): number[] {
-  const selezionati = this.getPunteggiSelezionati();
-  console.log(selezionati)
-  const currentValue = this.form.get(currentField)?.value;
-
-  return this.punteggiDisponibili.filter(p =>
-    !selezionati.includes(p) || p === currentValue
-  );
-}
+ 
 
 
 //DELETE
@@ -155,10 +124,5 @@ caricaDomande(): void {
 ngOnInit(): void {
     this.caricaDomande()
 
-    this.form.valueChanges.subscribe(() => {
-    this.aggiornaOpzioni();
-  });
-
-  this.aggiornaOpzioni(); // iniziale
   }
 }
