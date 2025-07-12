@@ -25,10 +25,13 @@
   
   <label>Punteggio</label>
   <select  formControlName="risposta1Punteggio"
+  (change)="onChange($event)"
     [class.input-error]="form.get('risposta1Punteggio')?.invalid && submitted"
     >
     @for (p of punteggiDisponibili; track $index){
-        <option [value]="p">{{p}}</option>
+        <option [value]="p"
+        [disabled]="punteggiSelzionati.includes(p)"
+        >{{p}}</option>
     }
   </select>
 </div>
@@ -41,10 +44,13 @@
   
   <label>Punteggio</label>
   <select  formControlName="risposta2Punteggio"
+  (change)="onChange($event)"
   [class.input-error]="form.get('risposta2Punteggio')?.invalid && submitted"
   >
       @for (p of punteggiDisponibili; track $index){
-        <option [value]="p">{{p}}</option>
+        <option [value]="p"
+        [disabled]="punteggiSelzionati.includes(p)"
+        >{{p}}</option>
     }
   </select>
 </div>
@@ -57,10 +63,13 @@
   
   <label>Punteggio</label>
   <select  formControlName="risposta3Punteggio"
+  (change)="onChange($event)"
   [class.input-error]="form.get('risposta3Punteggio')?.invalid && submitted"
   >
   @for (p of punteggiDisponibili; track $index){
-        <option [value]="p">{{p}}</option>
+        <option [value]="p"
+        [disabled]="punteggiSelzionati.includes(p)"
+        >{{p}}</option>
     }
   </select>
 </div>
@@ -72,10 +81,13 @@
   
   <label>Punteggio</label>
   <select  formControlName="risposta4Punteggio"
+  (change)="onChange($event)"
   [class.input-error]="form.get('risposta4Punteggio')?.invalid && submitted"
   >
   @for (p of punteggiDisponibili; track $index){
-        <option [value]="p" >{{p}}</option>
+        <option [value]="p" 
+        [disabled]="punteggiSelzionati.includes(p)"
+        >{{p}}</option>
     }
   </select>
 </div>

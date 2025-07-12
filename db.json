@@ -66,5 +66,12 @@
         }
       ]
     }
+  ],
+  "giocatori": [
+    {
+      "nome": "Claudio",
+      "score": 9
+
+    }
   ]
 }

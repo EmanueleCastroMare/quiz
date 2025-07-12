@@ -22,9 +22,26 @@ submitted = false;
 
 
 
-punteggiDisponibili = [0.2, 0, -0.1, -0.4]
+punteggiDisponibili = [" ","0.2", "0", "-0.1", "-0.4"]
+punteggiSelzionati:string[] =  []
 
 
+onChange(event: Event) {
+  const value = (event.target as HTMLSelectElement).value;
+  console.log("target", event)
+ 
+  if (!this.punteggiSelzionati.includes(value) && value !== " ") {
+    this.punteggiSelzionati.push(value);
+  }
+
+  if (value === " "){
+    const index = this.punteggiSelzionati.indexOf(value);
+    if (index > -1) {
+      this.punteggiSelzionati.splice(index, 1);
+    }
+  }
+  console.log(this.punteggiSelzionati)
+}
 
 
 
