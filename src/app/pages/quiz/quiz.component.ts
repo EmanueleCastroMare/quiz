@@ -3,6 +3,8 @@ import { Domanda} from '../../models/domande.model';
 import { DomandeService } from '../../services/domande.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { GiocatoriService } from '../../services/giocatori.service';
+import { Giocatore } from '../../models/giocatori.models';
 
 @Component({
   selector: 'app-quiz',
@@ -34,12 +36,16 @@ storicoRisposte: {
 }[] = [];
 
 
-constructor(private domandeService: DomandeService) {}
+nomeGiocatore: string = "";
+
+
+constructor(private domandeService: DomandeService, private giocatoreService: GiocatoriService) {}
 
 avviaQuiz() {
   this.quizIniziato = true;
   this.indiceCorrente = 0
   this.domandaCorrente = this.domande[this.indiceCorrente];
+  console.log(this.nomeGiocatore)
 
 }
 
@@ -85,6 +91,7 @@ prossimaDomanda(){
     this.quizTerminato = true;
     this.domandaCorrente = null
     this.mostraRisultato()
+    this.salvaGiocatore()
   }
 }
 
@@ -104,4 +111,23 @@ ngOnInit(): void {
   })
 }
 
+salvaGiocatore()  {
+  if(this.nomeGiocatore) {
+    const nuovoGiocatore: Giocatore = {nome: this.nomeGiocatore, score: this.punteggio.toString() }
+    this.giocatoreService.addGiocatore(nuovoGiocatore).subscribe({
+      next: data => {
+        console.log("Giocatore aggiunto", data)
+      },
+      error: err => {
+        console.error(err);
+      }
+    });
+  }
+  
+
 }
+
+
+}
+
+

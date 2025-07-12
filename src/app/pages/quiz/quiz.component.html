@@ -4,6 +4,9 @@
 
 @if (!quizIniziato){
     <div>
+    <label for="giocatore">Inserisci il tuo nome*: </label>
+    <input id="giocatore" [(ngModel)]="nomeGiocatore" name="giocatore" required type="text">
+
     <label for="punteggioIniziale">Inserisci il punteggio di partenza:</label>
     <input 
         type="number" 
@@ -15,6 +18,8 @@
     >
     </div>
     <button
+        [disabled]="!nomeGiocatore.trim()"
+        [class.disabled]="!nomeGiocatore.trim()"
         (click)="avviaQuiz()"
         >Vai alle domande
     </button>

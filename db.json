@@ -70,8 +70,18 @@
   "giocatori": [
     {
       "nome": "Claudio",
-      "score": 9
-
+      "score": "9",
+      "id": "0c15"
+    },
+    {
+      "id": "f88b",
+      "nome": "Antonino Marsico",
+      "score": "5.1"
+    },
+    {
+      "id": "6f57",
+      "nome": "Emanueeeeee",
+      "score": "1.7"
     }
   ]
 }

@@ -18,12 +18,12 @@ apiUrl = "http://localhost:3000/giocatori";
     return this.http.get<Giocatore[]>(this.apiUrl)
   }
 
-   addGiocatore(giocatore: Giocatore): Observable<Giocatore> {
+  addGiocatore(giocatore: Giocatore): Observable<Giocatore> {
       return this.http.post<Giocatore>(this.apiUrl, giocatore)
-    }
+  }
   
-    deleteGiocatore(id: string): Observable<void>{
+  deleteGiocatore(id: string): Observable<void>{
       return this.http.delete<void>(`${this.apiUrl}/${id}`)
-    }
+  }
 
 }

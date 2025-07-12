@@ -3,6 +3,26 @@
      margin: 0 auto;
 }
 
+.disabled {
+    background-color: #3498db!important;
+    opacity: 0.6;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+input {
+    margin-bottom: 20px;
+    height: 32px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-left: -8px!important;
+    
+}
+
 #container {
     background-color: #fff;
     min-height: 400px;
@@ -48,7 +68,7 @@
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 4px;
-    width: 80%;
+    width: 100%;
     text-decoration: none;
 }
 
